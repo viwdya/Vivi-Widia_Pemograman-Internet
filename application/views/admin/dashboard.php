@@ -114,15 +114,17 @@
                 <div class="dashboard-title">Dashboard</div>
                 <div class="row">
                     <div class="col-md-3">
-                        <div class="card card-stat">
-                            <div class="card-body">
-                                <span class="icon produk"><i class="fa fa-box"></i></span>
-                                <div>
-                                    <div class="h4 mb-0">9</div>
-                                    <small>Jumlah produk yang tersedia</small>
+                        <a href="<?= site_url('admin/products') ?>" style="text-decoration:none; color:inherit;">
+                            <div class="card card-stat">
+                                <div class="card-body">
+                                    <span class="icon produk"><i class="fa fa-box"></i></span>
+                                    <div>
+                                        <div class="h4 mb-0">9</div>
+                                        <small>Jumlah produk yang tersedia</small>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                     <div class="col-md-3">
                         <div class="card card-stat">
