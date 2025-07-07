@@ -32,4 +32,8 @@ class Admin extends CI_Controller {
         // Nanti bisa ambil data pesanan dari database berdasarkan $id
         $this->load->view('admin/order_detail');
     }
+
+    public function category() {
+        $this->load->view('admin/category');
+    }
 } 

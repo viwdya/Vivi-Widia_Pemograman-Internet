@@ -91,7 +91,7 @@
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item"><a class="nav-link active" href="#"><i class="fa fa-tachometer-alt"></i> Dashboard</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-th"></i> Kategori Produk</a></li>
+                    <li class="nav-item"><a class="nav-link" href="<?= site_url('admin/category') ?>"><i class="fa fa-th"></i> Kategori Produk</a></li>
                     <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-box"></i> Produk</a></li>
                     <li class="nav-item"><a class="nav-link" href="<?= site_url('admin/invoice') ?>"><i class="fa fa-shopping-cart"></i> Pesanan</a></li>
                     <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-ticket-alt"></i> Kupon</a></li>
