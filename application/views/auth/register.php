@@ -7,92 +7,113 @@
         body {
             background: #757575;
             min-height: 100vh;
-        }
-        .register-container {
-            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-        .register-card {
+        .register-wrapper {
             background: #fff;
-            border-radius: 14px;
+            border-radius: 16px;
             box-shadow: 0 4px 24px rgba(0,0,0,0.2);
-            overflow: hidden;
-            width: 900px;
-            max-width: 98vw;
             display: flex;
+            max-width: 900px;
+            width: 100%;
+            overflow: hidden;
         }
         .register-image {
             width: 350px;
-            background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80') center center/cover no-repeat;
+            background: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .register-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         .register-form {
             flex: 1;
-            padding: 48px 36px 36px 36px;
+            padding: 40px 40px 32px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         .register-title {
-            font-size: 1.7rem;
-            font-weight: 600;
+            font-size: 2rem;
+            font-weight: bold;
             text-align: center;
             margin-bottom: 32px;
             letter-spacing: 1px;
         }
-        .form-control {
-            background: #f7f7f7;
-            border-radius: 6px;
+        .form-row {
+            display: flex;
+            gap: 16px;
+        }
+        .form-group {
+            flex: 1;
         }
         .btn-green {
-            background: #4caf50;
+            background: #4cd137;
             color: #fff;
-            font-weight: 500;
-            letter-spacing: 1px;
+            font-weight: 600;
             border: none;
+            width: 120px;
         }
         .btn-green:hover {
-            background: #388e3c;
+            background: #44bd32;
         }
         @media (max-width: 800px) {
-            .register-card { flex-direction: column; width: 98vw; }
-            .register-image { width: 100%; height: 180px; }
+            .register-wrapper {
+                flex-direction: column;
+                max-width: 98vw;
+            }
+            .register-image {
+                width: 100%;
+                height: 180px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="register-container">
-        <div class="register-card">
-            <div class="register-image d-none d-md-block"></div>
-            <div class="register-form">
-                <div class="register-title">BUAT AKUN TOKO ALAT KOPI</div>
-                <?php if(isset($error)) echo '<div class="alert alert-danger">'.$error.'</div>'; ?>
-                <form method="post" action="<?= site_url('auth/register'); ?>">
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <input type="text" name="username" class="form-control" placeholder="Username" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <input type="password" name="password" class="form-control" placeholder="Password" required>
-                        </div>
+    <div class="register-wrapper">
+        <div class="register-image">
+            <img src="<?= base_url('assets/img/coffeeshop.jpeg') ?>" alt="Toko Alat Kopi">
+        </div>
+        <div class="register-form">
+            <div class="register-title">BUAT AKUN TOKO ALAT KOPI</div>
+            <?php if(isset($error)): ?>
+                <div class="alert alert-danger py-2"><?= $error ?></div>
+            <?php endif; ?>
+            <form method="post" action="<?= site_url('auth/register'); ?>">
+                <div class="form-row mb-3">
+                    <div class="form-group">
+                        <input type="text" name="username" class="form-control" placeholder="Username" required>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <input type="text" name="nama" class="form-control" placeholder="Nama lengkap" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <input type="email" name="email" class="form-control" placeholder="Email" required>
-                        </div>
+                    <div class="form-group">
+                        <input type="password" name="password" class="form-control" placeholder="Password" required>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <input type="text" name="no_hp" class="form-control" placeholder="No. HP" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <input type="text" name="alamat" class="form-control" placeholder="Alamat" required>
-                        </div>
+                </div>
+                <div class="form-row mb-3">
+                    <div class="form-group">
+                        <input type="text" name="nama" class="form-control" placeholder="Nama lengkap" required>
                     </div>
-                    <button type="submit" class="btn btn-green btn-block mt-3">Daftar</button>
-                </form>
-            </div>
+                    <div class="form-group">
+                        <input type="email" name="email" class="form-control" placeholder="Email" required>
+                    </div>
+                </div>
+                <div class="form-row mb-3">
+                    <div class="form-group">
+                        <input type="text" name="no_hp" class="form-control" placeholder="No. HP" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="alamat" class="form-control" placeholder="Alamat" required>
+                    </div>
+                </div>
+                <div class="form-group text-center mt-4">
+                    <button type="submit" class="btn btn-green">Daftar</button>
+                </div>
+            </form>
         </div>
     </div>
 </body>

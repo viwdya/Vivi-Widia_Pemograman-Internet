@@ -5,30 +5,43 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
         body {
             background: #757575;
             min-height: 100vh;
-        }
-        .login-container {
-            min-height: 100vh;
+            width: 100vw;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
-        }
-        .login-card {
-            background: rgba(30, 30, 30, 0.95);
-            border-radius: 12px;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.3);
-            padding: 32px 32px 24px 32px;
-            width: 100%;
-            max-width: 400px;
+            align-items: center;
         }
         .login-title {
             color: #fff;
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             text-align: center;
-            margin-bottom: 18px;
-            font-weight: 400;
+            margin-bottom: 28px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 8px #333, 0 1px 0 #fff;
+        }
+        .login-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100vw;
+        }
+        .login-card {
+            background: rgba(30, 30, 30, 0.98);
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+            padding: 40px 36px 32px 36px;
+            width: 100%;
+            max-width: 420px;
         }
         .login-subtitle {
             color: #ffb6c1;
@@ -36,16 +49,23 @@
             margin-bottom: 24px;
             font-size: 1.2rem;
             letter-spacing: 1px;
+            font-weight: 700;
+            text-shadow: 1px 1px 4px #222, 0 1px 0 #fff;
         }
         .form-label {
             color: #fff;
-            font-size: 0.95rem;
+            font-size: 1rem;
             letter-spacing: 1px;
+            font-weight: 600;
         }
         .form-control {
             background: #222;
             color: #fff;
             border: 1px solid #444;
+        }
+        .form-control::placeholder {
+            color: #bbb;
+            opacity: 1;
         }
         .form-control:focus {
             background: #222;
@@ -64,6 +84,8 @@
             border: none;
             font-weight: 500;
             letter-spacing: 1px;
+            width: 100%;
+            margin-top: 10px;
         }
         .btn-pink:hover {
             background: #e13b65;
@@ -83,44 +105,42 @@
     </style>
 </head>
 <body>
+    <div class="login-title">Login ke Toko Alat Kopi</div>
     <div class="login-container">
-        <div class="w-100">
-            <div class="login-title mb-2">Login ke Toko Alat Kopi</div>
-            <div class="d-flex justify-content-center">
-                <div class="login-card">
-                    <div class="login-subtitle">Login Akun</div>
-                    <?php if($this->session->flashdata('error')): ?>
-                        <div class="alert alert-danger py-2"><?= $this->session->flashdata('error'); ?></div>
-                    <?php endif; ?>
-                    <form method="post" action="<?= site_url('auth/proses_login'); ?>">
-                        <div class="form-group mb-3">
-                            <label class="form-label">USERNAME</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                </div>
-                                <input type="text" name="username" class="form-control" placeholder="Username" required autofocus>
+        <div class="w-100 d-flex justify-content-center align-items-center">
+            <div class="login-card">
+                <div class="login-subtitle">Login Akun</div>
+                <?php if($this->session->flashdata('error')): ?>
+                    <div class="alert alert-danger py-2"><?= $this->session->flashdata('error'); ?></div>
+                <?php endif; ?>
+                <form method="post" action="<?= site_url('auth/proses_login'); ?>">
+                    <div class="form-group mb-3">
+                        <label class="form-label">USERNAME</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
+                            <input type="text" name="username" class="form-control" placeholder="Username" required autofocus>
                         </div>
-                        <div class="form-group mb-2">
-                            <label class="form-label">PASSWORD</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                                </div>
-                                <input type="password" name="password" class="form-control" placeholder="Password" required>
+                    </div>
+                    <div class="form-group mb-2">
+                        <label class="form-label">PASSWORD</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
                             </div>
+                            <input type="password" name="password" class="form-control" placeholder="Password" required>
                         </div>
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <a href="#" class="forgot-link">Lupa password?</a>
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="ingat" name="ingat">
-                                <label class="custom-control-label remember-label" for="ingat">ingat saya</label>
-                            </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <a href="#" class="forgot-link">Lupa password?</a>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="ingat" name="ingat">
+                            <label class="custom-control-label remember-label" for="ingat">ingat saya</label>
                         </div>
-                        <button type="submit" class="btn btn-pink btn-block">LOGIN</button>
-                    </form>
-                </div>
+                    </div>
+                    <button type="submit" class="btn btn-pink btn-block">LOGIN</button>
+                </form>
             </div>
         </div>
     </div>
