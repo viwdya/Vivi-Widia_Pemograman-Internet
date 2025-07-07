@@ -14,4 +14,8 @@ class Admin extends CI_Controller {
     public function products() {
         $this->load->view('admin/products');
     }
+
+    public function add_product() {
+        $this->load->view('admin/add_product');
+    }
 } 

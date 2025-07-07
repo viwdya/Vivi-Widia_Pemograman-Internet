@@ -145,7 +145,7 @@
             <div class="main-content">
                 <div class="produk-header">
                     <h3>Kelola Produk</h3>
-                    <button class="btn btn-tambah">Tambah</button>
+                    <button class="btn btn-tambah" onclick="window.location.href='<?= site_url('admin/add_product') ?>'">Tambah</button>
                 </div>
                 <div class="produk-list mt-0">
                     <div class="row">
