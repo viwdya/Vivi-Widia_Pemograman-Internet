@@ -27,4 +27,9 @@ class Admin extends CI_Controller {
     public function invoice() {
         $this->load->view('admin/invoice');
     }
+
+    public function order_detail($id = null) {
+        // Nanti bisa ambil data pesanan dari database berdasarkan $id
+        $this->load->view('admin/order_detail');
+    }
 } 

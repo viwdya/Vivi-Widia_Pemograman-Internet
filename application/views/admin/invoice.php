@@ -125,7 +125,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>#VODM3624113567</td>
+                                <td><a href="<?= site_url('admin/order_detail/1') ?>">#VODM3624113567</a></td>
                                 <td>vira</td>
                                 <td>Jumat, 28 Juni 2024</td>
                                 <td>1</td>
@@ -133,7 +133,7 @@
                                 <td class="status-batal">Dibatalkan</td>
                             </tr>
                             <tr>
-                                <td>#ASV261020111545</td>
+                                <td><a href="<?= site_url('admin/order_detail/2') ?>">#ASV261020111545</a></td>
                                 <td>Pembeli3</td>
                                 <td>Senin, 26 November 2020</td>
                                 <td>1</td>
@@ -141,7 +141,7 @@
                                 <td class="status-selesai">Selesai</td>
                             </tr>
                             <tr>
-                                <td>#PNL261020114041</td>
+                                <td><a href="<?= site_url('admin/order_detail/3') ?>">#PNL261020114041</a></td>
                                 <td>Pembeli2</td>
                                 <td>Senin, 26 November 2020</td>
                                 <td>1</td>
@@ -149,7 +149,7 @@
                                 <td class="status-proses">Dalam proses</td>
                             </tr>
                             <tr>
-                                <td>#UKZ61020183129</td>
+                                <td><a href="<?= site_url('admin/order_detail/4') ?>">#UKZ61020183129</a></td>
                                 <td>Pembeli1</td>
                                 <td>Senin, 26 November 2020</td>
                                 <td>1</td>
