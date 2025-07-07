@@ -151,44 +151,52 @@
                     <div class="row">
                         <!-- Contoh produk statis, nanti bisa diganti dengan loop data dari database -->
                         <div class="col-md-3">
-                            <div class="produk-card">
-                                <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=200&q=80" alt="Syphon Coffee Maker">
-                                <div class="produk-nama">Syphon Coffee Maker Manual Brew Vacuum Pot</div>
-                                <div class="produk-stok">5 | Rp 288.000,00</div>
-                                <div class="btn-group">
-                                    <!-- tombol dihapus sementara -->
+                            <a href="<?= site_url('admin/edit_product/1') ?>" style="text-decoration:none; color:inherit;">
+                                <div class="produk-card">
+                                    <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=200&q=80" alt="Syphon Coffee Maker">
+                                    <div class="produk-nama">Syphon Coffee Maker Manual Brew Vacuum Pot</div>
+                                    <div class="produk-stok">5 | Rp 288.000,00</div>
+                                    <div class="btn-group">
+                                        <!-- tombol dihapus sementara -->
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                         <div class="col-md-3">
-                            <div class="produk-card">
-                                <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=200&q=80" alt="Electric Coffee Grinder">
-                                <div class="produk-nama">Electric Coffee Grinder - 600N</div>
-                                <div class="produk-stok">17 | Rp 500.000,00</div>
-                                <div class="btn-group">
-                                    <!-- tombol dihapus sementara -->
+                            <a href="<?= site_url('admin/edit_product/2') ?>" style="text-decoration:none; color:inherit;">
+                                <div class="produk-card">
+                                    <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=200&q=80" alt="Electric Coffee Grinder">
+                                    <div class="produk-nama">Electric Coffee Grinder - 600N</div>
+                                    <div class="produk-stok">17 | Rp 500.000,00</div>
+                                    <div class="btn-group">
+                                        <!-- tombol dihapus sementara -->
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                         <div class="col-md-3">
-                            <div class="produk-card">
-                                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=200&q=80" alt="Coffee Server">
-                                <div class="produk-nama">coffee server / coffee pot 01 / teko server kopi v60</div>
-                                <div class="produk-stok">18 | Rp 47.800,00</div>
-                                <div class="btn-group">
-                                    <!-- tombol dihapus sementara -->
+                            <a href="<?= site_url('admin/edit_product/3') ?>" style="text-decoration:none; color:inherit;">
+                                <div class="produk-card">
+                                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=200&q=80" alt="Coffee Server">
+                                    <div class="produk-nama">coffee server / coffee pot 01 / teko server kopi v60</div>
+                                    <div class="produk-stok">18 | Rp 47.800,00</div>
+                                    <div class="btn-group">
+                                        <!-- tombol dihapus sementara -->
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                         <div class="col-md-3">
-                            <div class="produk-card">
-                                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=200&q=80" alt="Vietnam Drip">
-                                <div class="produk-nama">Vietnam Drip Alat Pembuat Kopi Vietnam</div>
-                                <div class="produk-stok">18 | Rp 32.000,00</div>
-                                <div class="btn-group">
-                                    <!-- tombol dihapus sementara -->
+                            <a href="<?= site_url('admin/edit_product/4') ?>" style="text-decoration:none; color:inherit;">
+                                <div class="produk-card">
+                                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=200&q=80" alt="Vietnam Drip">
+                                    <div class="produk-nama">Vietnam Drip Alat Pembuat Kopi Vietnam</div>
+                                    <div class="produk-stok">18 | Rp 32.000,00</div>
+                                    <div class="btn-group">
+                                        <!-- tombol dihapus sementara -->
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                         <!-- Tambahkan produk lain di sini -->
                     </div>
