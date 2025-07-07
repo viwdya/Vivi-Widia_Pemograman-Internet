@@ -23,4 +23,8 @@ class Admin extends CI_Controller {
         // Nanti bisa ambil data produk dari database berdasarkan $id
         $this->load->view('admin/edit_product');
     }
+
+    public function invoice() {
+        $this->load->view('admin/invoice');
+    }
 } 
