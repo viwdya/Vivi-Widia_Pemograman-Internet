@@ -17,13 +17,19 @@ class Auth extends CI_Controller {
         $password = $this->input->post('password');
 
         $admin = $this->Admin_model->cek_login($username, $password);
-
         if ($admin) {
             $this->session->set_userdata('admin', $admin);
             redirect('dashboard');
         } else {
-            $this->session->set_flashdata('error', 'Username atau password salah!');
-            redirect('auth/login');
+            $this->load->model('Pelanggan_model');
+            $pelanggan = $this->Pelanggan_model->cek_login($username, $password);
+            if ($pelanggan) {
+                $this->session->set_userdata('pelanggan', $pelanggan);
+                redirect('customer/dashboard');
+            } else {
+                $this->session->set_flashdata('error', 'Username atau password salah!');
+                redirect('auth/login');
+            }
         }
     }
 
