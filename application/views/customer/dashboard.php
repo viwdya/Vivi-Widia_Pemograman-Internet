@@ -102,12 +102,14 @@
         <nav class="col-md-2 d-none d-md-block sidebar">
             <div class="sidebar-title">Toko Alat Kopi</div>
             <div class="user-info">
-                <img src="https://ui-avatars.com/api/?name=Wisa+Restu+Wibawa&background=3578e5&color=fff" alt="User">
-                <div class="user-name">Wisa Restu Wibawa</div>
+                <?php $nama = isset($_SESSION['pelanggan']->nama) ? $_SESSION['pelanggan']->nama : 'Pelanggan'; ?>
+                <img src="https://ui-avatars.com/api/?name=<?= urlencode($nama) ?>&background=3578e5&color=fff" alt="User">
+                <div class="user-name"><?= $nama ?></div>
             </div>
             <ul class="nav flex-column">
                 <li class="nav-item"><a class="nav-link active" href="#"><i class="fa fa-home"></i> Dasbor</a></li>
-                <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-shopping-bag"></i> Order Saya</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= site_url('customer/cart') ?>"><i class="fa fa-shopping-cart"></i> Keranjang</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= site_url('customer/cart') ?>"><i class="fa fa-shopping-bag"></i> Order Saya</a></li>
                 <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-credit-card"></i> Pembayaran</a></li>
                 <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-star"></i> Review</a></li>
             </ul>
@@ -123,7 +125,7 @@
                             <div class="card-body">
                                 <div class="stat-value">0</div>
                                 <div class="stat-title">Order</div>
-                                <div class="stat-link">Lihat Order</div>
+                                <div class="stat-link"><a href="<?= site_url('customer/cart') ?>" style="color:inherit;text-decoration:underline">Lihat Order</a></div>
                             </div>
                         </div>
                     </div>
