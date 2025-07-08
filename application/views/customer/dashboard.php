@@ -164,11 +164,12 @@
                     <?php foreach ($produk as $p): ?>
                         <div class="col-6 col-md-3 mb-3">
                             <div class="card h-100 shadow-sm p-2" style="min-height:210px;">
-                                <a href="<?= site_url('customer/product_detail/' . $p['id']) ?>" style="text-decoration:none;color:inherit">
-                                    <img src="<?= $p['gambar'] ?>" class="card-img-top mx-auto d-block" alt="<?= $p['nama'] ?>" style="height:100px;width:100px;object-fit:cover;margin-bottom:10px;">
+                                <a href="<?= site_url('customer/product_detail/' . $p->id_produk) ?>" style="text-decoration:none;color:inherit">
+                                    <img src="<?= $p->gambar ?>" class="card-img-top mx-auto d-block" alt="<?= $p->nama_produk ?>" style="height:100px;width:100px;object-fit:cover;margin-bottom:10px;">
                                     <div class="card-body p-2 text-center">
-                                        <h6 class="card-title mb-1" style="font-size:0.95rem;min-height:36px;"> <?= $p['nama'] ?> </h6>
-                                        <div class="card-text font-weight-bold mb-1" style="font-size:0.95rem;">Rp <?= number_format($p['harga'], 0, ',', '.') ?></div>
+                                        <h6 class="card-title mb-1" style="font-size:0.95rem;min-height:36px;"> <?= $p->nama_produk ?> </h6>
+                                        <div class="card-text font-weight-bold mb-1" style="font-size:0.95rem;">Rp <?= number_format($p->harga, 0, ',', '.') ?></div>
+                                        <div class="text-muted" style="font-size:0.85rem;">Kategori: <?= $p->id_kategori ?></div>
                                         <span class="btn btn-outline-primary btn-sm py-0 px-2" style="font-size:0.85rem;">Lihat Detail</span>
                                     </div>
                                 </a>

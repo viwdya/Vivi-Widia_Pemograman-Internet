@@ -12,11 +12,39 @@ class Admin extends CI_Controller {
     }
 
     public function products() {
-        $this->load->view('admin/products');
+        $this->load->model('Product_model');
+        $data['produk'] = $this->Product_model->get_all_with_kategori();
+        $this->load->view('admin/products', $data);
     }
 
     public function add_product() {
-        $this->load->view('admin/add_product');
+        $this->load->model('Product_model');
+        $data['kategori'] = $this->Product_model->get_all_kategori();
+        if ($this->input->method() === 'post') {
+            // Proses upload gambar
+            $gambar = null;
+            if (!empty($_FILES['gambar']['name'])) {
+                $config['upload_path'] = './assets/img/';
+                $config['allowed_types'] = 'jpg|jpeg|png';
+                $config['max_size'] = 2048;
+                $config['file_name'] = time() . '_' . $_FILES['gambar']['name'];
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload('gambar')) {
+                    $gambar = 'assets/img/' . $this->upload->data('file_name');
+                }
+            }
+            $insert = [
+                'nama_produk' => $this->input->post('nama_produk'),
+                'id_kategori' => $this->input->post('id_kategori'),
+                'harga' => $this->input->post('harga'),
+                'stok' => $this->input->post('stok'),
+                'deskripsi' => $this->input->post('deskripsi'),
+                'gambar' => $gambar,
+            ];
+            $this->Product_model->insert($insert);
+            redirect('admin/products');
+        }
+        $this->load->view('admin/add_product', $data);
     }
 
     public function edit_product($id = null) {
@@ -58,6 +86,8 @@ class Admin extends CI_Controller {
     }
 
     public function category() {
-        $this->load->view('admin/category');
+        $this->load->model('Product_model');
+        $data['kategori'] = $this->Product_model->get_all_kategori();
+        $this->load->view('admin/category', $data);
     }
 } 

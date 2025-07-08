@@ -23,20 +23,20 @@
 <div class="container product-detail-container">
     <div class="row align-items-center">
         <div class="col-md-5 text-center mb-4 mb-md-0">
-            <img src="<?= $produk['gambar'] ?>" class="product-img" alt="<?= $produk['nama'] ?>">
+            <img src="<?= $produk->gambar ?>" class="product-img" alt="<?= $produk->nama_produk ?>">
         </div>
         <div class="col-md-7">
-            <div class="product-title"><?= $produk['nama'] ?></div>
+            <div class="product-title"><?= $produk->nama_produk ?></div>
             <div class="product-rating mb-2">
                 <?php for ($i = 0; $i < 5; $i++): ?>
                     <i class="fa fa-star<?= $i < $produk['rating'] ? '' : '-o' ?>"></i>
                 <?php endfor; ?>
                 <span class="product-meta ml-2"> <?= $produk['rating'] ?> (<?= $produk['rating_count'] ?> rating) &bull; Terjual <?= $produk['sold'] ?></span>
             </div>
-            <div class="product-price">Rp <?= number_format($produk['harga'], 0, ',', '.') ?></div>
-            <div class="product-stock">Tersedia <?= $produk['stok'] ?></div>
+            <div class="product-price">Rp <?= number_format($produk->harga, 0, ',', '.') ?></div>
+            <div class="product-stock">Tersedia <?= $produk->stok ?></div>
             <div class="product-meta mb-2">Kategori: <?= $produk['kategori'] ?></div>
-            <div class="product-desc mb-3">Keterangan: <?= $produk['keterangan'] ?></div>
+            <div class="product-desc mb-3">Deskripsi: <?= $produk->deskripsi ?></div>
             <form method="post" action="#">
                 <div class="form-row align-items-center mb-3">
                     <div class="col-auto">

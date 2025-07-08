@@ -21,10 +21,6 @@
         .category-header .btn-tambah:hover { background: #2e8b3c; }
         .category-list { background: #fff; border-radius: 0 0 12px 12px; padding: 32px; box-shadow: 0 2px 8px rgba(38,49,89,0.08); }
         .table th, .table td { vertical-align: middle !important; }
-        .btn-action { margin-right: 4px; }
-        .btn-edit { background: #ffc107; color: #fff; }
-        .btn-delete { background: #e74c3c; color: #fff; }
-        .btn-view { background: #17a2b8; color: #fff; }
     </style>
 </head>
 <body>
@@ -63,57 +59,19 @@
                     <table class="table table-bordered table-hover mb-0">
                         <thead class="thead-light">
                             <tr>
-                                <th>#</th>
-                                <th>Nama</th>
-                                <th style="width:120px;">Aksi</th>
+                                <th>ID Kategori</th>
+                                <th>Nama Kategori</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>2</td>
-                                <td>Alat kopi</td>
-                                <td>
-                                    <button class="btn btn-sm btn-edit btn-action"><i class="fa fa-edit"></i></button>
-                                    <button class="btn btn-sm btn-delete btn-action"><i class="fa fa-trash"></i></button>
-                                    <button class="btn btn-sm btn-view btn-action"><i class="fa fa-eye"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>9</td>
-                                <td>Cafe</td>
-                                <td>
-                                    <button class="btn btn-sm btn-edit btn-action"><i class="fa fa-edit"></i></button>
-                                    <button class="btn btn-sm btn-delete btn-action"><i class="fa fa-trash"></i></button>
-                                    <button class="btn btn-sm btn-view btn-action"><i class="fa fa-eye"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>10</td>
-                                <td>Penggiling</td>
-                                <td>
-                                    <button class="btn btn-sm btn-edit btn-action"><i class="fa fa-edit"></i></button>
-                                    <button class="btn btn-sm btn-delete btn-action"><i class="fa fa-trash"></i></button>
-                                    <button class="btn btn-sm btn-view btn-action"><i class="fa fa-eye"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>11</td>
-                                <td>Filter</td>
-                                <td>
-                                    <button class="btn btn-sm btn-edit btn-action"><i class="fa fa-edit"></i></button>
-                                    <button class="btn btn-sm btn-delete btn-action"><i class="fa fa-trash"></i></button>
-                                    <button class="btn btn-sm btn-view btn-action"><i class="fa fa-eye"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>12</td>
-                                <td>Alat Seduh</td>
-                                <td>
-                                    <button class="btn btn-sm btn-edit btn-action"><i class="fa fa-edit"></i></button>
-                                    <button class="btn btn-sm btn-delete btn-action"><i class="fa fa-trash"></i></button>
-                                    <button class="btn btn-sm btn-view btn-action"><i class="fa fa-eye"></i></button>
-                                </td>
-                            </tr>
+                            <?php if (!empty($kategori)): foreach ($kategori as $k): ?>
+                                <tr>
+                                    <td><?= $k->id_kategori ?></td>
+                                    <td><?= $k->nama_kategori ?></td>
+                                </tr>
+                            <?php endforeach; else: ?>
+                                <tr><td colspan="2" class="text-center">Belum ada kategori.</td></tr>
+                            <?php endif; ?>
                         </tbody>
                     </table>
                 </div>

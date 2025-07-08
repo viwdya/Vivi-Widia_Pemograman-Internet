@@ -8,33 +8,8 @@ class Customer extends CI_Controller {
     }
 
     public function dashboard() {
-        // Produk sama seperti di dashboard admin
-        $produk = [
-            [
-                'id' => 1,
-                'nama' => 'Syphon Coffee Maker Manual Brew Vacuum Pot',
-                'harga' => 288000,
-                'gambar' => 'https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=200&q=80',
-            ],
-            [
-                'id' => 2,
-                'nama' => 'Electric Coffee Grinder - 600N',
-                'harga' => 500000,
-                'gambar' => 'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=200&q=80',
-            ],
-            [
-                'id' => 3,
-                'nama' => 'coffee server / coffee pot 01 / teko server kopi v60',
-                'harga' => 47800,
-                'gambar' => 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=200&q=80',
-            ],
-            [
-                'id' => 4,
-                'nama' => 'Vietnam Drip Alat Pembuat Kopi Vietnam',
-                'harga' => 32000,
-                'gambar' => 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=200&q=80',
-            ],
-        ];
+        $this->load->model('Product_model');
+        $produk = $this->Product_model->get_all();
         $this->load->view('customer/dashboard', ['produk' => $produk]);
     }
 
@@ -94,19 +69,9 @@ class Customer extends CI_Controller {
     }
 
     public function product_detail($id = null) {
-        // Contoh data produk, ganti dengan data dari database jika sudah ada
-        $produk = [
-            'id' => $id,
-            'nama' => 'Syphon Coffee Maker Manual Brew Vacuum Pot',
-            'keterangan' => 'Alat manual brew kopi dengan sistem vacuum pot.',
-            'kategori' => 'Manual Brew',
-            'stok' => 51,
-            'harga' => 288000,
-            'rating' => 5.0,
-            'rating_count' => 100,
-            'sold' => 500,
-            'gambar' => base_url('assets/img/coffee grinder.jpeg'),
-        ];
+        $this->load->model('Product_model');
+        $produk = $this->db->get_where('produk', ['id_produk' => $id])->row();
+        if (!$produk) show_404();
         $this->load->view('customer/product_detail', ['produk' => $produk]);
     }
 } 
