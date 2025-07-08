@@ -122,4 +122,12 @@ class Admin extends CI_Controller {
         $data['kategori'] = $this->Product_model->get_all_kategori();
         $this->load->view('admin/category', $data);
     }
+
+    public function product_detail($id = null) {
+        $produk = $this->db->select('produk.*, kategori.nama_kategori')
+            ->join('kategori', 'produk.id_kategori = kategori.id_kategori', 'left')
+            ->get_where('produk', ['id_produk' => $id])->row();
+        if (!$produk) show_404();
+        $this->load->view('admin/product_detail', ['produk' => $produk]);
+    }
 } 

@@ -158,6 +158,10 @@
                                             <div class="produk-nama"><?= $p->nama_produk ?></div>
                                             <div class="produk-stok">Rp <?= number_format($p->harga, 0, ',', '.') ?></div>
                                             <div class="text-muted" style="font-size:0.95rem;">Kategori: <?= $p->nama_kategori ?></div>
+                                            <div class="btn-group mt-2">
+                                                <a href="<?= site_url('admin/product_detail/' . $p->id_produk) ?>" class="btn btn-info btn-sm">Detail</a>
+                                                <a href="<?= site_url('admin/edit_product/' . $p->id_produk) ?>" class="btn btn-warning btn-sm">Edit</a>
+                                            </div>
                                         </div>
                                     </a>
                                 </div>
