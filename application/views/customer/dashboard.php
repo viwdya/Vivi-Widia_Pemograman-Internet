@@ -162,14 +162,14 @@
             <div class="row mt-4">
                 <?php if (!empty($produk)): ?>
                     <?php foreach ($produk as $p): ?>
-                        <div class="col-md-4 mb-4">
-                            <div class="card h-100 shadow-sm">
+                        <div class="col-6 col-md-3 mb-3">
+                            <div class="card h-100 shadow-sm p-2" style="min-height:210px;">
                                 <a href="<?= site_url('customer/product_detail/' . $p['id']) ?>" style="text-decoration:none;color:inherit">
-                                    <img src="<?= $p['gambar'] ?>" class="card-img-top" alt="<?= $p['nama'] ?>" style="height:220px;object-fit:cover;">
-                                    <div class="card-body">
-                                        <h5 class="card-title" style="font-size:1.1rem;min-height:48px;"> <?= $p['nama'] ?> </h5>
-                                        <div class="card-text font-weight-bold mb-2">Rp <?= number_format($p['harga'], 0, ',', '.') ?></div>
-                                        <span class="btn btn-outline-primary btn-sm">Lihat Detail</span>
+                                    <img src="<?= $p['gambar'] ?>" class="card-img-top mx-auto d-block" alt="<?= $p['nama'] ?>" style="height:100px;width:100px;object-fit:cover;margin-bottom:10px;">
+                                    <div class="card-body p-2 text-center">
+                                        <h6 class="card-title mb-1" style="font-size:0.95rem;min-height:36px;"> <?= $p['nama'] ?> </h6>
+                                        <div class="card-text font-weight-bold mb-1" style="font-size:0.95rem;">Rp <?= number_format($p['harga'], 0, ',', '.') ?></div>
+                                        <span class="btn btn-outline-primary btn-sm py-0 px-2" style="font-size:0.85rem;">Lihat Detail</span>
                                     </div>
                                 </a>
                             </div>

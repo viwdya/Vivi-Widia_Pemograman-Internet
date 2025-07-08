@@ -8,19 +8,31 @@ class Customer extends CI_Controller {
     }
 
     public function dashboard() {
-        // Contoh data produk, ganti dengan data dari database jika sudah ada
+        // Produk sama seperti di dashboard admin
         $produk = [
             [
                 'id' => 1,
                 'nama' => 'Syphon Coffee Maker Manual Brew Vacuum Pot',
                 'harga' => 288000,
-                'gambar' => base_url('assets/img/coffee grinder.jpeg'),
+                'gambar' => 'https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=200&q=80',
             ],
             [
                 'id' => 2,
+                'nama' => 'Electric Coffee Grinder - 600N',
+                'harga' => 500000,
+                'gambar' => 'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=200&q=80',
+            ],
+            [
+                'id' => 3,
+                'nama' => 'coffee server / coffee pot 01 / teko server kopi v60',
+                'harga' => 47800,
+                'gambar' => 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=200&q=80',
+            ],
+            [
+                'id' => 4,
                 'nama' => 'Vietnam Drip Alat Pembuat Kopi Vietnam',
-                'harga' => 22000,
-                'gambar' => base_url('assets/img/teapot.jpeg'),
+                'harga' => 32000,
+                'gambar' => 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=200&q=80',
             ],
         ];
         $this->load->view('customer/dashboard', ['produk' => $produk]);
