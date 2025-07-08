@@ -45,4 +45,24 @@ class Customer extends CI_Controller {
         ];
         $this->load->view('customer/order_history', ['orders' => $orders]);
     }
+
+    public function payment() {
+        // Contoh data order yang belum dibayar, bisa diganti dengan data dari database
+        $orders = [
+            [
+                'id' => '#819724214793',
+                'total' => 310000,
+            ],
+        ];
+        $bank_tujuan = [
+            [
+                'nama' => 'Mandiri an AGUNG SAGARA',
+                'no_rek' => '3461909572',
+            ],
+        ];
+        $this->load->view('customer/payment', [
+            'orders' => $orders,
+            'bank_tujuan' => $bank_tujuan
+        ]);
+    }
 } 

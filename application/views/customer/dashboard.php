@@ -110,7 +110,7 @@
                 <li class="nav-item"><a class="nav-link active" href="#"><i class="fa fa-home"></i> Dasbor</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?= site_url('customer/cart') ?>"><i class="fa fa-shopping-cart"></i> Keranjang</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?= site_url('customer/order_history') ?>"><i class="fa fa-shopping-bag"></i> Order Saya</a></li>
-                <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-credit-card"></i> Pembayaran</a></li>
+                <li class="nav-item"><a class="nav-link" href="<?= site_url('customer/payment') ?>"><i class="fa fa-credit-card"></i> Pembayaran</a></li>
                 <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-star"></i> Review</a></li>
             </ul>
         </nav>
