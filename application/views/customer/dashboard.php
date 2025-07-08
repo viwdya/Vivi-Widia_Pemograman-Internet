@@ -107,7 +107,7 @@
                 <div class="user-name"><?= $nama ?></div>
             </div>
             <ul class="nav flex-column">
-                <li class="nav-item"><a class="nav-link active" href="#"><i class="fa fa-home"></i> Dasbor</a></li>
+                <li class="nav-item"><a class="nav-link active" href="#"><i class="fa fa-home"></i> Dashboard</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?= site_url('customer/cart') ?>"><i class="fa fa-shopping-cart"></i> Keranjang</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?= site_url('customer/order_history') ?>"><i class="fa fa-shopping-bag"></i> Order Saya</a></li>
                 <li class="nav-item"><a class="nav-link" href="<?= site_url('customer/payment') ?>"><i class="fa fa-credit-card"></i> Pembayaran</a></li>
@@ -117,7 +117,7 @@
         <!-- Main Content -->
         <main class="col-md-10 ml-sm-auto px-0">
             <div class="main-content">
-                <div class="dashboard-title">Dasbor</div>
+                <div class="dashboard-title">Dashboard</div>
                 <div class="alert alert-success">Pendaftaran akun berhasil!</div>
                 <div class="row">
                     <div class="col-md-3">
