@@ -158,6 +158,27 @@
                     </div>
                 </div>
             </div>
+            <!-- Produk Grid -->
+            <div class="row mt-4">
+                <?php if (!empty($produk)): ?>
+                    <?php foreach ($produk as $p): ?>
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100 shadow-sm">
+                                <a href="<?= site_url('customer/product_detail/' . $p['id']) ?>" style="text-decoration:none;color:inherit">
+                                    <img src="<?= $p['gambar'] ?>" class="card-img-top" alt="<?= $p['nama'] ?>" style="height:220px;object-fit:cover;">
+                                    <div class="card-body">
+                                        <h5 class="card-title" style="font-size:1.1rem;min-height:48px;"> <?= $p['nama'] ?> </h5>
+                                        <div class="card-text font-weight-bold mb-2">Rp <?= number_format($p['harga'], 0, ',', '.') ?></div>
+                                        <span class="btn btn-outline-primary btn-sm">Lihat Detail</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <div class="col-12"><div class="alert alert-info">Belum ada produk.</div></div>
+                <?php endif; ?>
+            </div>
         </main>
     </div>
 </div>

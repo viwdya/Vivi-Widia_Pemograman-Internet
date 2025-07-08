@@ -8,7 +8,22 @@ class Customer extends CI_Controller {
     }
 
     public function dashboard() {
-        $this->load->view('customer/dashboard');
+        // Contoh data produk, ganti dengan data dari database jika sudah ada
+        $produk = [
+            [
+                'id' => 1,
+                'nama' => 'Syphon Coffee Maker Manual Brew Vacuum Pot',
+                'harga' => 288000,
+                'gambar' => base_url('assets/img/coffee grinder.jpeg'),
+            ],
+            [
+                'id' => 2,
+                'nama' => 'Vietnam Drip Alat Pembuat Kopi Vietnam',
+                'harga' => 22000,
+                'gambar' => base_url('assets/img/teapot.jpeg'),
+            ],
+        ];
+        $this->load->view('customer/dashboard', ['produk' => $produk]);
     }
 
     public function cart() {
@@ -64,5 +79,22 @@ class Customer extends CI_Controller {
             'orders' => $orders,
             'bank_tujuan' => $bank_tujuan
         ]);
+    }
+
+    public function product_detail($id = null) {
+        // Contoh data produk, ganti dengan data dari database jika sudah ada
+        $produk = [
+            'id' => $id,
+            'nama' => 'Syphon Coffee Maker Manual Brew Vacuum Pot',
+            'keterangan' => 'Alat manual brew kopi dengan sistem vacuum pot.',
+            'kategori' => 'Manual Brew',
+            'stok' => 51,
+            'harga' => 288000,
+            'rating' => 5.0,
+            'rating_count' => 100,
+            'sold' => 500,
+            'gambar' => base_url('assets/img/coffee grinder.jpeg'),
+        ];
+        $this->load->view('customer/product_detail', ['produk' => $produk]);
     }
 } 
