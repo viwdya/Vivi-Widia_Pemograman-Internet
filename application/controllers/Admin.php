@@ -79,7 +79,13 @@ class Admin extends CI_Controller {
     }
 
     public function invoice() {
-        $this->load->view('admin/invoice');
+        // Ambil semua pesanan dan join dengan pelanggan
+        $this->db->select('pesanan.*, pelanggan.nama as nama_pelanggan');
+        $this->db->from('pesanan');
+        $this->db->join('pelanggan', 'pesanan.id_pelanggan = pelanggan.id_pelanggan', 'left');
+        $this->db->order_by('tanggal_pesanan', 'DESC');
+        $orders = $this->db->get()->result();
+        $this->load->view('admin/invoice', ['orders' => $orders]);
     }
 
     public function order_detail($id = null) {

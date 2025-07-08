@@ -33,18 +33,24 @@ class Customer extends CI_Controller {
     }
 
     public function order_history() {
-        // Contoh data riwayat order, ganti dengan data dari database jika sudah ada
-        $orders = [
-            [
-                'no' => 16,
-                'id' => '#819724214793',
-                'tanggal' => 'Selasa, 09 Juli 2024',
-                'jumlah_pesanan' => '2 barang',
-                'total' => 310000,
-                'pembayaran' => 'Transfer bank',
-                'status' => 'Selesai',
-            ],
-        ];
+        // Ambil id pelanggan dari session
+        $id_pelanggan = isset($_SESSION['pelanggan']->id_pelanggan) ? $_SESSION['pelanggan']->id_pelanggan : null;
+        $orders = [];
+        if ($id_pelanggan) {
+            $query = $this->db->order_by('tanggal_pesanan', 'DESC')->get_where('pesanan', ['id_pelanggan' => $id_pelanggan]);
+            $no = 1;
+            foreach ($query->result() as $row) {
+                $orders[] = [
+                    'no' => $no++,
+                    'id' => '#' . str_pad($row->id_pesanan, 12, '0', STR_PAD_LEFT),
+                    'tanggal' => date('l, d F Y H:i', strtotime($row->tanggal_pesanan)),
+                    'jumlah_pesanan' => '-', // Nanti bisa diisi jumlah item dari detail_pesanan
+                    'total' => $row->total,
+                    'pembayaran' => '-', // Nanti bisa diisi metode pembayaran jika ada
+                    'status' => ucfirst($row->status),
+                ];
+            }
+        }
         $this->load->view('customer/order_history', ['orders' => $orders]);
     }
 

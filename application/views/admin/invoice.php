@@ -125,42 +125,23 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td><a href="<?= site_url('admin/order_detail/1') ?>">#VODM3624113567</a></td>
-                                <td>vira</td>
-                                <td>Jumat, 28 Juni 2024</td>
-                                <td>1</td>
-                                <td>Rp 49.985,00</td>
-                                <td class="status-batal">Dibatalkan</td>
-                                <td><a href="<?= site_url('admin/order_process/1') ?>" title="Proses Pembayaran"><i class="fa fa-credit-card"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td><a href="<?= site_url('admin/order_detail/2') ?>">#ASV261020111545</a></td>
-                                <td>Pembeli3</td>
-                                <td>Senin, 26 November 2020</td>
-                                <td>1</td>
-                                <td>Rp 60.000,00</td>
-                                <td class="status-selesai">Selesai</td>
-                                <td><a href="<?= site_url('admin/order_process/2') ?>" title="Proses Pembayaran"><i class="fa fa-credit-card"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td><a href="<?= site_url('admin/order_detail/3') ?>">#PNL261020114041</a></td>
-                                <td>Pembeli2</td>
-                                <td>Senin, 26 November 2020</td>
-                                <td>1</td>
-                                <td>Rp 30.000,00</td>
-                                <td class="status-proses">Dalam proses</td>
-                                <td><a href="<?= site_url('admin/order_process/3') ?>" title="Proses Pembayaran"><i class="fa fa-credit-card"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td><a href="<?= site_url('admin/order_detail/4') ?>">#UKZ61020183129</a></td>
-                                <td>Pembeli1</td>
-                                <td>Senin, 26 November 2020</td>
-                                <td>1</td>
-                                <td>Rp 18.000,00</td>
-                                <td class="status-selesai">Selesai</td>
-                                <td><a href="<?= site_url('admin/order_process/4') ?>" title="Proses Pembayaran"><i class="fa fa-credit-card"></i></a></td>
-                            </tr>
+                            <?php if (!empty($orders)): ?>
+                                <?php foreach ($orders as $order): ?>
+                                    <tr>
+                                        <td><a href="<?= site_url('admin/order_detail/' . $order->id_pesanan) ?>">#<?= str_pad($order->id_pesanan, 12, '0', STR_PAD_LEFT) ?></a></td>
+                                        <td><?= $order->nama_pelanggan ?></td>
+                                        <td><?= date('l, d F Y H:i', strtotime($order->tanggal_pesanan)) ?></td>
+                                        <td>-</td>
+                                        <td>Rp <?= number_format($order->total, 0, ',', '.') ?></td>
+                                        <td class="status-<?= $order->status ?>">
+                                            <?= ucfirst($order->status) ?>
+                                        </td>
+                                        <td><a href="<?= site_url('admin/order_process/' . $order->id_pesanan) ?>" title="Proses Pembayaran"><i class="fa fa-credit-card"></i></a></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <tr><td colspan="7" class="text-center">Belum ada pesanan.</td></tr>
+                            <?php endif; ?>
                         </tbody>
                     </table>
                     <div class="footer">
