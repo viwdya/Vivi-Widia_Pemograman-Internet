@@ -121,6 +121,7 @@
                                 <th>Jumlah Item</th>
                                 <th>Jumlah Harga</th>
                                 <th>Status</th>
+                                <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -131,6 +132,7 @@
                                 <td>1</td>
                                 <td>Rp 49.985,00</td>
                                 <td class="status-batal">Dibatalkan</td>
+                                <td><a href="<?= site_url('admin/order_process/1') ?>" title="Proses Pembayaran"><i class="fa fa-credit-card"></i></a></td>
                             </tr>
                             <tr>
                                 <td><a href="<?= site_url('admin/order_detail/2') ?>">#ASV261020111545</a></td>
@@ -139,6 +141,7 @@
                                 <td>1</td>
                                 <td>Rp 60.000,00</td>
                                 <td class="status-selesai">Selesai</td>
+                                <td><a href="<?= site_url('admin/order_process/2') ?>" title="Proses Pembayaran"><i class="fa fa-credit-card"></i></a></td>
                             </tr>
                             <tr>
                                 <td><a href="<?= site_url('admin/order_detail/3') ?>">#PNL261020114041</a></td>
@@ -147,6 +150,7 @@
                                 <td>1</td>
                                 <td>Rp 30.000,00</td>
                                 <td class="status-proses">Dalam proses</td>
+                                <td><a href="<?= site_url('admin/order_process/3') ?>" title="Proses Pembayaran"><i class="fa fa-credit-card"></i></a></td>
                             </tr>
                             <tr>
                                 <td><a href="<?= site_url('admin/order_detail/4') ?>">#UKZ61020183129</a></td>
@@ -155,6 +159,7 @@
                                 <td>1</td>
                                 <td>Rp 18.000,00</td>
                                 <td class="status-selesai">Selesai</td>
+                                <td><a href="<?= site_url('admin/order_process/4') ?>" title="Proses Pembayaran"><i class="fa fa-credit-card"></i></a></td>
                             </tr>
                         </tbody>
                     </table>

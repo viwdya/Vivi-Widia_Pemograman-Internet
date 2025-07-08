@@ -33,6 +33,30 @@ class Admin extends CI_Controller {
         $this->load->view('admin/order_detail');
     }
 
+    public function order_process($id = null) {
+        // Contoh data pesanan, ganti dengan data dari database jika sudah ada
+        $order = [
+            'nomor' => '#BLT9724214793',
+            'tanggal' => 'Selasa, 09 Juli 2024',
+            'item' => 2,
+            'harga' => 310000,
+            'metode' => 'Transfer bank',
+            'status' => 'Selesai',
+        ];
+        $penerima = [
+            'nama' => 'Wira Restu Wibawa',
+            'no_hp' => '0895178138070',
+            'alamat' => 'kp.sanding 13/12',
+            'catatan' => '',
+        ];
+        $bukti = base_url('assets/img/teapot.jpeg');
+        $this->load->view('admin/order_process', [
+            'order' => $order,
+            'penerima' => $penerima,
+            'bukti' => $bukti
+        ]);
+    }
+
     public function category() {
         $this->load->view('admin/category');
     }
