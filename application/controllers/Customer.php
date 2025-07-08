@@ -29,4 +29,20 @@ class Customer extends CI_Controller {
         ];
         $this->load->view('customer/cart', ['cart' => $cart]);
     }
+
+    public function order_history() {
+        // Contoh data riwayat order, ganti dengan data dari database jika sudah ada
+        $orders = [
+            [
+                'no' => 16,
+                'id' => '#819724214793',
+                'tanggal' => 'Selasa, 09 Juli 2024',
+                'jumlah_pesanan' => '2 barang',
+                'total' => 310000,
+                'pembayaran' => 'Transfer bank',
+                'status' => 'Selesai',
+            ],
+        ];
+        $this->load->view('customer/order_history', ['orders' => $orders]);
+    }
 } 
