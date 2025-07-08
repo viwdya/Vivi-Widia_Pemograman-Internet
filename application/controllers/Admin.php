@@ -48,8 +48,34 @@ class Admin extends CI_Controller {
     }
 
     public function edit_product($id = null) {
-        // Nanti bisa ambil data produk dari database berdasarkan $id
-        $this->load->view('admin/edit_product');
+        $this->load->model('Product_model');
+        $data['kategori'] = $this->Product_model->get_all_kategori();
+        $data['produk'] = $this->db->get_where('produk', ['id_produk' => $id])->row();
+        if ($this->input->method() === 'post') {
+            // Proses upload gambar jika ada
+            $gambar = $data['produk']->gambar;
+            if (!empty($_FILES['gambar']['name'])) {
+                $config['upload_path'] = './assets/img/';
+                $config['allowed_types'] = 'jpg|jpeg|png';
+                $config['max_size'] = 2048;
+                $config['file_name'] = time() . '_' . $_FILES['gambar']['name'];
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload('gambar')) {
+                    $gambar = 'assets/img/' . $this->upload->data('file_name');
+                }
+            }
+            $update = [
+                'nama_produk' => $this->input->post('nama_produk'),
+                'id_kategori' => $this->input->post('id_kategori'),
+                'harga' => $this->input->post('harga'),
+                'stok' => $this->input->post('stok'),
+                'deskripsi' => $this->input->post('deskripsi'),
+                'gambar' => $gambar,
+            ];
+            $this->db->where('id_produk', $id)->update('produk', $update);
+            redirect('admin/products');
+        }
+        $this->load->view('admin/edit_product', $data);
     }
 
     public function invoice() {

@@ -152,12 +152,14 @@
                         <?php if (!empty($produk)): ?>
                             <?php foreach ($produk as $p): ?>
                                 <div class="col-md-3">
-                                    <div class="produk-card">
-                                        <img src="<?= $p->gambar ? base_url($p->gambar) : base_url('assets/img/default.png') ?>" alt="<?= $p->nama_produk ?>">
-                                        <div class="produk-nama"><?= $p->nama_produk ?></div>
-                                        <div class="produk-stok">Rp <?= number_format($p->harga, 0, ',', '.') ?></div>
-                                        <div class="text-muted" style="font-size:0.95rem;">Kategori: <?= $p->nama_kategori ?></div>
-                                    </div>
+                                    <a href="<?= site_url('admin/edit_product/' . $p->id_produk) ?>" style="text-decoration:none;color:inherit">
+                                        <div class="produk-card">
+                                            <img src="<?= $p->gambar ? base_url($p->gambar) : base_url('assets/img/default.png') ?>" alt="<?= $p->nama_produk ?>">
+                                            <div class="produk-nama"><?= $p->nama_produk ?></div>
+                                            <div class="produk-stok">Rp <?= number_format($p->harga, 0, ',', '.') ?></div>
+                                            <div class="text-muted" style="font-size:0.95rem;">Kategori: <?= $p->nama_kategori ?></div>
+                                        </div>
+                                    </a>
                                 </div>
                             <?php endforeach; ?>
                         <?php else: ?>

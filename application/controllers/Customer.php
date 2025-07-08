@@ -9,7 +9,7 @@ class Customer extends CI_Controller {
 
     public function dashboard() {
         $this->load->model('Product_model');
-        $produk = $this->Product_model->get_all();
+        $produk = $this->Product_model->get_all_with_kategori();
         $this->load->view('customer/dashboard', ['produk' => $produk]);
     }
 

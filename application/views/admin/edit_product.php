@@ -7,104 +7,39 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        body {
-            background: #f4f6fb;
-        }
-        .sidebar {
-            background: #263159;
-            min-height: 100vh;
-            color: #fff;
-            padding-top: 30px;
-        }
-        .sidebar .nav-link {
-            color: #fff;
-            font-weight: 500;
-            margin-bottom: 10px;
-        }
-        .sidebar .nav-link.active, .sidebar .nav-link:hover {
-            background: #435585;
-            border-radius: 8px;
-        }
-        .sidebar .fa {
-            margin-right: 10px;
-        }
-        .header {
-            background: #fff;
-            padding: 18px 32px;
-            border-bottom: 1px solid #e0e0e0;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .header .search-box {
-            width: 350px;
-        }
-        .header .admin-info {
-            font-weight: 600;
-            color: #263159;
-        }
-        .main-content {
-            padding: 32px 32px 0 32px;
-        }
-        .form-section {
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(38,49,89,0.08);
-            padding: 32px 32px 24px 32px;
-        }
-        .form-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #263159;
-            margin-bottom: 24px;
-        }
-        .form-group label {
-            font-weight: 500;
-        }
-        .btn-primary {
-            background: #3b5998;
-            border: none;
-            font-weight: 600;
-        }
-        .btn-primary:hover {
-            background: #2e4372;
-        }
-        .foto-section {
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(38,49,89,0.08);
-            padding: 32px 24px 24px 24px;
-            height: 100%;
-        }
-        .foto-section label {
-            font-weight: 500;
-        }
-        .foto-preview {
-            width: 100%;
-            text-align: center;
-            margin-bottom: 16px;
-        }
-        .foto-preview img {
-            max-width: 120px;
-            max-height: 120px;
-            border-radius: 8px;
-        }
-        .foto-opsi {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 10px;
-        }
-        .foto-opsi span {
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: #3b5998;
-            cursor: pointer;
-        }
-        .foto-opsi span:hover {
-            text-decoration: underline;
-        }
+        body { background: #f4f6fb; }
+        .sidebar { background: #263159; min-height: 100vh; color: #fff; padding-top: 30px; }
+        .sidebar .nav-link { color: #fff; font-weight: 500; margin-bottom: 10px; }
+        .sidebar .nav-link.active, .sidebar .nav-link:hover { background: #435585; border-radius: 8px; }
+        .sidebar .fa { margin-right: 10px; }
+        .header { background: #fff; padding: 18px 32px; border-bottom: 1px solid #e0e0e0; display: flex; align-items: center; justify-content: space-between; }
+        .header .admin-info { font-weight: 600; color: #263159; }
+        .main-content { padding: 32px 32px 0 32px; }
+        .form-section { background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(38,49,89,0.08); padding: 32px 32px 24px 32px; }
+        .form-title { font-size: 1.3rem; font-weight: 700; color: #263159; margin-bottom: 24px; }
+        .form-group label { font-weight: 500; }
+        .btn-primary { background: #3b5998; border: none; font-weight: 600; }
+        .btn-primary:hover { background: #2e4372; }
+        .foto-section { background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(38,49,89,0.08); padding: 32px 24px 24px 24px; height: 100%; }
+        .foto-section label { font-weight: 500; }
+        .img-preview { width: 100%; max-width: 200px; max-height: 200px; object-fit: contain; margin-bottom: 10px; border-radius: 8px; border: 1px solid #eee; }
     </style>
+    <script>
+    function previewImage(input) {
+        var preview = document.getElementById('imgPreview');
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            }
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            preview.src = preview.getAttribute('data-old');
+            preview.style.display = preview.src ? 'block' : 'none';
+        }
+    }
+    </script>
 </head>
 <body>
 <div class="container-fluid">
@@ -140,52 +75,42 @@
                             <div class="form-section">
                                 <div class="form-title">Data Produk</div>
                                 <div class="form-group">
-                                    <label for="kategori">Kategori</label>
-                                    <select class="form-control" id="kategori" name="kategori" disabled>
-                                        <option value="alat_kopi" selected>Alat Kopi</option>
-                                        <option value="perlengkapan_cafe">Perlengkapan Cafe</option>
+                                    <label for="nama_produk">Nama Produk</label>
+                                    <input type="text" class="form-control" id="nama_produk" name="nama_produk" value="<?= $produk->nama_produk ?>" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="id_kategori">Kategori</label>
+                                    <select class="form-control" id="id_kategori" name="id_kategori" required>
+                                        <option value="">Pilih Kategori</option>
+                                        <?php if (!empty($kategori)): foreach ($kategori as $k): ?>
+                                            <option value="<?= $k->id_kategori ?>" <?= $produk->id_kategori == $k->id_kategori ? 'selected' : '' ?>><?= $k->nama_kategori ?></option>
+                                        <?php endforeach; endif; ?>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="nama">Nama produk</label>
-                                    <input type="text" class="form-control" id="nama" name="nama" value="Syphon Coffee Maker Manual Brew Vacuum Pot" required readonly>
+                                    <label for="harga">Harga</label>
+                                    <input type="number" class="form-control" id="harga" name="harga" min="0" value="<?= $produk->harga ?>" required>
                                 </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="harga">Harga</label>
-                                        <input type="number" class="form-control" id="harga" name="harga" value="288000" required readonly>
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="stok">Stok</label>
-                                        <input type="number" class="form-control" id="stok" name="stok" value="5" required readonly>
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="satuan">Satuan</label>
-                                        <input type="text" class="form-control" id="satuan" name="satuan" value="1" readonly>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="stok">Stok</label>
+                                    <input type="number" class="form-control" id="stok" name="stok" min="0" value="<?= $produk->stok ?>" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="deskripsi">Deskripsi</label>
-                                    <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3" readonly>Alat seduh kopi manual dengan sistem vacuum pot.</textarea>
+                                    <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3"><?= $produk->deskripsi ?></textarea>
                                 </div>
-                                <div class="form-group">
-                                    <label for="diskon">Diskon</label>
-                                    <input type="number" class="form-control" id="diskon" name="diskon" value="0" readonly>
-                                </div>
+                                <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="foto-section">
                                 <div class="form-title">Foto</div>
-                                <div class="foto-preview">
-                                    <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=200&q=80" alt="Foto Produk">
+                                <div class="form-group">
+                                    <label for="gambar">Upload Gambar</label>
+                                    <input type="file" class="form-control-file" id="gambar" name="gambar" accept="image/png, image/jpeg" onchange="previewImage(this)">
+                                    <small class="form-text text-muted">Pilih foto PNG atau JPG, ukuran maksimal 2MB</small>
                                 </div>
-                                <div class="foto-opsi">
-                                    <span style="color:#3b5998;">Current</span>
-                                    <span style="color:#3b5998;">Ganti</span>
-                                    <span style="color:#e74c3c;">Hapus</span>
-                                </div>
-                                <button type="submit" class="btn btn-primary btn-block mt-4">Simpan</button>
+                                <img id="imgPreview" class="img-preview" src="<?= $produk->gambar ? base_url($produk->gambar) : '' ?>" data-old="<?= $produk->gambar ? base_url($produk->gambar) : '' ?>" style="<?= $produk->gambar ? 'display:block;' : 'display:none;' ?>" alt="Preview Gambar">
                             </div>
                         </div>
                     </div>
